@@ -4,11 +4,11 @@ import ntptime
 from machine import Pin, I2C
 import pinno as P  # (문제에서 주어진 가상의 라이브러리: SDA_PIN, SCL_PIN 등이 있다고 가정)
 
-''
+'''
 # [사용자 설정값들]
 WIFI_SSID = "your_ssid"
 WIFI_PASSWORD = "your_password"
-''
+'''
 import config as C
 WIFI_SSID = C.SSID
 WIFI_PASSWORD = C.SSID_PASS
@@ -112,8 +112,7 @@ def main():
     # 1) 와이파이 연결
     station = connect_wifi(WIFI_SSID, WIFI_PASSWORD)
     ip_info = station.ifconfig()
-    print(f"[WiFi 정보] IP: {ip_info[0]}, Netmask: {ip_info[1]}, "
-          f"Gateway: {ip_info[2]}, DNS: {ip_info[3]}\n")
+    print(f"[WiFi 정보] IP: {ip_info[0]}, Netmask: {ip_info[1]}, Gateway: {ip_info[2]}, DNS: {ip_info[3]}\n")
 
     # 2) NTP 서버 동기화
     print("[2/4] NTP 서버 설정 및 동기화 진행...")
@@ -144,9 +143,7 @@ def main():
     # 설정된 시간 출력
     weekday_kor = ["월", "화", "수", "목", "금", "토", "일"]
     print("[세팅된 날짜/시간 정보]")
-    print(f" {year}년 {month}월 {day}일 "
-          f"({weekday_kor[ds1307_wday - 1]}) "
-          f"{hour:02d}:{minute:02d}:{second:02d}\n")
+    print(f" {year}년 {month}월 {day}일 ({weekday_kor[ds1307_wday - 1]}) {hour:02d}:{minute:02d}:{second:02d}\n")
 
     # 4) 5초 후 DS1307에서 시간 읽어오기
     print("[4/4] 5초 대기 후 DS1307 다시 읽어오기...")
@@ -155,9 +152,7 @@ def main():
 
     # 읽어온 시간 출력
     print("[읽어온 날짜/시간 정보]")
-    print(f" {year_r}년 {month_r}월 {day_r}일 "
-          f"({weekday_kor[wday_r - 1]}) "
-          f"{hour_r:02d}:{min_r:02d}:{sec_r:02d}\n")
+    print(f" {year_r}년 {month_r}월 {day_r}일 ({weekday_kor[wday_r - 1]}) {hour_r:02d}:{min_r:02d}:{sec_r:02d}\n")
 
 if __name__ == "__main__":
     main()

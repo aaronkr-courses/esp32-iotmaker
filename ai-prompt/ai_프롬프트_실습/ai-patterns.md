@@ -9,8 +9,8 @@ patterns:
         매개변수: 
             i2c_bus: i2c       
             no: 0        
-            scl_pin: P.SCL
-            sda_pin: P.SDA
+            scl_pin: Pin(P.SCL)
+            sda_pin: Pin(P.SDA)
         코드변환: |
             from machine import I2C
             {{i2c_bus}} = I2C({{no}}, scl={{scl_pin}}, sda={{sda_pin}})
@@ -71,12 +71,25 @@ patterns:
         코드변환: |
             from dht22sensor import DHT22Sensor
             {{이름}} = DHT22Sensor(pin_gpio={{pin_gpio}})
-    BH1750: 
+
+    dht22:
+        매개변수:
+            이름: dht22
+            pin_gpio: P.DHT
+        코드변환: |
+            from dht22sensor import DHT22Sensor
+            {{이름}} = DHT22Sensor(pin_gpio={{pin_gpio}})
+
+    조도: 
         매개변수:
             이름: bh1750
             i2c_bus: i2c
         from bh1750sensor import BH1750Sensor
         {{이름}} = BH1750Sensor({{i2c_bus}})
+
+    bh1750: 
+        alias: 조도
+
     LED:
         매개변수:
             이름: 
@@ -135,6 +148,7 @@ patterns:
             from timerrun import TimerRun
             {{이름}} = TimerRun(period={{period}},callback={{callback}}) 
             run.add({{이름}}.run)
+
     OLED: 
         코드변환: |
             from ssd1306 import SSD1306_I2C  # OLED 라이브러리
@@ -142,6 +156,9 @@ patterns:
             WIDTH = 64
             HEIGHT = 48
             oled = SSD1306_I2C(WIDTH, HEIGHT, i2c)
+    oled: 
+        alias: OLED
+
     set_on_off_str:
         매개변수:
             이름: 

@@ -5,32 +5,32 @@ file: ai-9-4-bh1750-oled.md
 ( 여기에 'ai-patterns.md'의 내용을 붙여 넣으세요. )
 
 components:
-- 센서읽기_앞부분   
+- 센서읽기_앞부분
 
 brightness = 0
 
 components:
+
 - i2c:
     scl_pin: Pin(P.SCL)
     sda_pin: Pin(P.SDA)
 - 조도:
     이름: bh1750
-- OLED 
+- OLED
 
-def display_oled(): 
+def display_oled():
     oled.fill(0)
     draw_hangul(oled,'조도',0,0)
-    oled.text(f'{bright} lx'bright,0,20)
+    oled.text(f'{brightness} lx',0,20)
     oled.show()
 
 def sensor_read():
     global brightness
-    data = sensor.read()
+    data = bh1750.read()
     print(data)
     p = Parse(data)
     brightness = p.value
     print(f'{p.key}: {p.value}')
-
     display_oled()
 
 components:

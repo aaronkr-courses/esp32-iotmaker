@@ -1,0 +1,261 @@
+[
+    {
+        "id": "5e1bfc5e785f36c9",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "01888a13c37faf30",
+        "type": "mqtt in",
+        "z": "5e1bfc5e785f36c9",
+        "name": "",
+        "topic": "tele/ESP32-01/LWT",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "32cab7332f302aa9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "e5de4c29e1e55563"
+            ]
+        ]
+    },
+    {
+        "id": "e5de4c29e1e55563",
+        "type": "debug",
+        "z": "5e1bfc5e785f36c9",
+        "name": "LWT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 410,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "89696c54cf34a6df",
+        "type": "mqtt in",
+        "z": "5e1bfc5e785f36c9",
+        "name": "",
+        "topic": "tele/ESP32-01/SENSOR",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "32cab7332f302aa9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "e47feb2e2ede4704"
+            ]
+        ]
+    },
+    {
+        "id": "e47feb2e2ede4704",
+        "type": "debug",
+        "z": "5e1bfc5e785f36c9",
+        "name": "SENSOR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 420,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "979d05b0834e92a7",
+        "type": "mqtt in",
+        "z": "5e1bfc5e785f36c9",
+        "name": "",
+        "topic": "tele/ESP32-01/INFO",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "32cab7332f302aa9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "86031c93535c2eda"
+            ]
+        ]
+    },
+    {
+        "id": "86031c93535c2eda",
+        "type": "debug",
+        "z": "5e1bfc5e785f36c9",
+        "name": "INFO",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 410,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6cbde4ddda3d9bd5",
+        "type": "debug",
+        "z": "5e1bfc5e785f36c9",
+        "name": "TELEPERIOD",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 440,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "752338dfc3d39d40",
+        "type": "mqtt in",
+        "z": "5e1bfc5e785f36c9",
+        "name": "",
+        "topic": "stat/ESP32-01/TELEPERIOD",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "32cab7332f302aa9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 320,
+        "wires": [
+            [
+                "6cbde4ddda3d9bd5"
+            ]
+        ]
+    },
+    {
+        "id": "edda67e1410fc9fe",
+        "type": "mqtt out",
+        "z": "5e1bfc5e785f36c9",
+        "name": "",
+        "topic": "cmnd/ESP32-01/TELEPERIOD",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "32cab7332f302aa9",
+        "x": 490,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1400ccf41d52620c",
+        "type": "inject",
+        "z": "5e1bfc5e785f36c9",
+        "name": "TELEPERIOD:5",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 180,
+        "y": 400,
+        "wires": [
+            [
+                "edda67e1410fc9fe"
+            ]
+        ]
+    },
+    {
+        "id": "e2bb568b0aadf524",
+        "type": "inject",
+        "z": "5e1bfc5e785f36c9",
+        "name": "TELEPERIOD:10",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "edda67e1410fc9fe"
+            ]
+        ]
+    },
+    {
+        "id": "32cab7332f302aa9",
+        "type": "mqtt-broker",
+        "name": "local:1883",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]

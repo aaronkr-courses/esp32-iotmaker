@@ -4,9 +4,15 @@ import ntptime
 from machine import Pin, I2C
 import pinno as P  # (문제에서 주어진 가상의 라이브러리: SDA_PIN, SCL_PIN 등이 있다고 가정)
 
+''
 # [사용자 설정값들]
 WIFI_SSID = "your_ssid"
 WIFI_PASSWORD = "your_password"
+''
+import config as C
+WIFI_SSID = C.SSID
+WIFI_PASSWORD = C.SSID_PASS
+
 SDA_PIN = P.SDA       # 예: 21번 핀
 SCL_PIN = P.SCL       # 예: 22번 핀
 TIME_ZONE = +9        # 한국 KST는 UTC+9
@@ -155,3 +161,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
+    
+    

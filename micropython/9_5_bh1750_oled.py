@@ -3,6 +3,7 @@ from timerrun import TimerRun
 from run import Run
 from parse import Parse
 import pinno as P
+import time
 
 brightness = 0
 
@@ -16,11 +17,12 @@ from bh1750sensor import BH1750Sensor
 bh1750 = BH1750Sensor(i2c)
 
 # OLED 디스플레이 설정
+from oled_i2c import addr  # oled i2c addr인 0x3c 또는 0x3d를 돌려줌
 from ssd1306 import SSD1306_I2C  # OLED 라이브러리
 from hangul import draw_hangul, V2, H2, X4  # 한글 출력 모듈
 WIDTH = 64
 HEIGHT = 48
-oled = SSD1306_I2C(WIDTH, HEIGHT, i2c)
+oled = SSD1306_I2C(WIDTH, HEIGHT, i2c,addr=addr(i2c)) # addr=0x3c 또는 0x3d
 
 def display_oled(): 
     oled.fill(0)

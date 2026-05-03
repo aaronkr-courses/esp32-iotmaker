@@ -8,6 +8,7 @@ from ssd1306 import SSD1306_I2C
 # 한글 모아쓰기 모듈 
 from hangul import draw_hangul,H2,V2,X4
 import pinno as P
+from oled_i2c import addr
 
 # I2C 버스 만들기
 SCL_PIN = P.SCL
@@ -17,7 +18,8 @@ i2c = I2C(0, scl=Pin(SCL_PIN), sda=Pin(SDA_PIN))
 # oled 인스턴스 만들기
 WIDTH  = 64
 HEIGHT = 48
-oled = SSD1306_I2C(WIDTH, HEIGHT, i2c)
+
+oled = SSD1306_I2C(WIDTH, HEIGHT, i2c,addr=addr(i2c)) # addr=0x3c 또는 0x3d
  
 def main():  
      
